@@ -1,0 +1,2205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Slop
+  
+    &mdash; Slop - Option gathering made easy
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (S)</a> &raquo; 
+    
+    
+    <span class="title">Slop</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Slop
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Slop</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">Enumerable</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/slop.rb<span class="defines">,<br />
+  lib/slop/option.rb,<br /> lib/slop/options.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Slop/InvalidArgumentError.html" title="Slop::InvalidArgumentError (class)">InvalidArgumentError</a></span>, <span class='object_link'><a href="Slop/InvalidOptionError.html" title="Slop::InvalidOptionError (class)">InvalidOptionError</a></span>, <span class='object_link'><a href="Slop/MissingArgumentError.html" title="Slop::MissingArgumentError (class)">MissingArgumentError</a></span>, <span class='object_link'><a href="Slop/Option.html" title="Slop::Option (class)">Option</a></span>, <span class='object_link'><a href="Slop/Options.html" title="Slop::Options (class)">Options</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          <div class="docstring">
+  <div class="discussion">
+    <p>The current version string</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The current version string</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>1.7.0</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+  
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#banner-instance_method" title="#banner (instance method)">- (String) <strong>banner</strong>(text = nil) </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Set or return banner text.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#commands-instance_method" title="#commands (instance method)">- (Hash) <strong>commands</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#longest_flag-instance_method" title="#longest_flag (instance method)">- (Integer) <strong>longest_flag</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The length of the longest flag slop knows of.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#options-instance_method" title="#options (instance method)">- (Options) <strong>options</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse-class_method" title="parse (class method)">+ (Slop) <strong>parse</strong>(items = ARGV, options = {}, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses the items from a CLI format into a friendly object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse%21-class_method" title="parse! (class method)">+ (Slop) <strong>parse!</strong>(items = ARGV, options = {}, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Identical to <span class='object_link'><a href="#parse-class_method" title="Slop.parse (method)">parse</a></span>, but removes parsed options from the
+original Array.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D-instance_method" title="#[] (instance method)">- (Object) <strong>[]</strong>(key) </a>
+    
+
+    
+      (also: #get)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value associated with that option.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#command-instance_method" title="#command (instance method)">- (Slop) <strong>command</strong>(label, options = {}, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Namespace options depending on what command is executed.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each-instance_method" title="#each (instance method)">- (Object) <strong>each</strong>(&amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Enumerable interface.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Slop) <strong>initialize</strong>(*opts, &amp;block) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of Slop.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">- (Object) <strong>inspect</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#method_missing-instance_method" title="#method_missing (instance method)">- (Boolean) <strong>method_missing</strong>(meth, *args, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Allows you to check whether an option was specified in the parsed list.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_empty-instance_method" title="#on_empty (instance method)">- (Object) <strong>on_empty</strong>(obj = nil, &amp;block) </a>
+    
+
+    
+      (also: #on_empty=)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Trigger an event when Slop has no values to parse.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_noopts-instance_method" title="#on_noopts (instance method)">- (Object) <strong>on_noopts</strong>(obj = nil, &amp;block) </a>
+    
+
+    
+      (also: #on_optionless)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Trigger an event when the arguments contain no options.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#option-instance_method" title="#option (instance method)">- (Slop::Option) <strong>option</strong>(*args, &amp;block) </a>
+    
+
+    
+      (also: #opt, #on)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Specify an option with a short or long version, description and type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse-instance_method" title="#parse (instance method)">- (Object) <strong>parse</strong>(items = ARGV, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parse a list of options, leaving the original Array unchanged.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse%21-instance_method" title="#parse! (instance method)">- (Object) <strong>parse!</strong>(items = ARGV, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parse a list of options, removing parsed options from the original Array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#present%3F-instance_method" title="#present? (instance method)">- (Boolean) <strong>present?</strong>(option_name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Check if an option is specified in the parsed list.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_hash-instance_method" title="#to_hash (instance method)">- (Hash) <strong>to_hash</strong>(symbols = false) </a>
+    
+
+    
+      (also: #to_h)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the parsed list into a option/value hash.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">- (String) <strong>to_s</strong> </a>
+    
+
+    
+      (also: #help)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the banner followed by available options listed on the next line.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Slop (class)">Slop</a></span></tt>) <strong>initialize</strong>(*opts, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>A new instance of Slop</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>opts</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 94</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id opts'>opts</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id sloptions'>sloptions</span> <span class='op'>=</span> <span class='id opts'>opts</span><span class='period'>.</span><span class='id last'>last</span><span class='period'>.</span><span class='id is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id opts'>opts</span><span class='period'>.</span><span class='id pop'>pop</span> <span class='op'>:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:banner</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id opts'>opts</span><span class='period'>.</span><span class='id shift'>shift</span> <span class='kw'>if</span> <span class='id opts'>opts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span> <span class='symbol'>:to_str</span>
+  <span class='id opts'>opts</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id o'>o</span><span class='op'>|</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='id o'>o</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span> <span class='rbrace'>}</span>
+
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='const'>Options</span><span class='period'>.</span><span class='id new'>new</span>
+  <span class='ivar'>@commands</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='ivar'>@longest_flag</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='ivar'>@invalid_options</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='ivar'>@banner</span> <span class='op'>=</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:banner</span><span class='rbracket'>]</span>
+  <span class='ivar'>@strict</span> <span class='op'>=</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:strict</span><span class='rbracket'>]</span>
+  <span class='ivar'>@ignore_case</span> <span class='op'>=</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:ignore_case</span><span class='rbracket'>]</span>
+  <span class='ivar'>@multiple_switches</span> <span class='op'>=</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:multiple_switches</span><span class='rbracket'>]</span>
+  <span class='ivar'>@autocreate</span> <span class='op'>=</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:autocreate</span><span class='rbracket'>]</span>
+  <span class='ivar'>@arguments</span> <span class='op'>=</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:arguments</span><span class='rbracket'>]</span>
+  <span class='ivar'>@on_empty</span> <span class='op'>=</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:on_empty</span><span class='rbracket'>]</span>
+  <span class='ivar'>@on_noopts</span> <span class='op'>=</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:on_noopts</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:on_optionless</span><span class='rbracket'>]</span>
+  <span class='ivar'>@sloptions</span> <span class='op'>=</span> <span class='id sloptions'>sloptions</span>
+
+  <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+    <span class='id block'>block</span><span class='period'>.</span><span class='id arity'>arity</span> <span class='op'>==</span> <span class='int'>1</span> <span class='op'>?</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id instance_eval'>instance_eval</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:help</span><span class='rbracket'>]</span>
+    <span class='id on'>on</span> <span class='symbol'>:h</span><span class='comma'>,</span> <span class='symbol'>:help</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Print this help message</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:tail</span> <span class='op'>=&gt;</span> <span class='kw'>true</span> <span class='kw'>do</span>
+      <span class='lparen'>(</span><span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:io</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='gvar'>$stderr</span><span class='rparen'>)</span><span class='period'>.</span><span class='id puts'>puts</span> <span class='id help'>help</span>
+      <span class='id exit'>exit</span> <span class='kw'>unless</span> <span class='id sloptions'>sloptions</span><span class='lbracket'>[</span><span class='symbol'>:exit_on_help</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>false</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+<div id="method_missing_details" class="method_details_list">
+  <h2>Dynamic Method Handling</h2>
+  <p class="notice this">
+    This class handles dynamic methods through the <tt>method_missing</tt> method
+    
+  </p>
+  
+    <div class="method_details first">
+  <p class="signature first" id="method_missing-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>method_missing</strong>(meth, *args, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Allows you to check whether an option was specified in the parsed list.
+Merely sugar for <code>present?</code></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='comment'>#== ruby foo.rb -v
+</span><span class='id opts'>opts</span><span class='period'>.</span><span class='id verbose?'>verbose?</span> <span class='comment'>#=&gt; true
+</span><span class='id opts'>opts</span><span class='period'>.</span><span class='id name?'>name?</span>    <span class='comment'>#=&gt; false</span></pre>
+    
+  </div>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>true if this option is present, false otherwise</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#present%3F-instance_method" title="Slop#present? (method)">#present?</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+284
+285
+286
+287</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 284</span>
+
+<span class='kw'>def</span> <span class='id method_missing'>method_missing</span><span class='lparen'>(</span><span class='id meth'>meth</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>super</span> <span class='kw'>unless</span> <span class='id meth'>meth</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>?</span><span class='tstring_end'>'</span></span>
+  <span class='id present?'>present?</span> <span class='id meth'>meth</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id chomp'>chomp</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>?</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="banner=-instance_method"></span>
+      <span id="banner-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="banner-instance_method">
+  
+    - (<tt>String</tt>) <strong>banner</strong>(text = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Set or return banner text.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='id opts'>opts</span> <span class='op'>=</span> <span class='const'>Slop</span><span class='period'>.</span><span class='id parse'>parse</span> <span class='kw'>do</span>
+  <span class='id banner'>banner</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Usage - ruby foo.rb [arguments]</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Displayed banner text.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The current banner.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137
+138</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 135</span>
+
+<span class='kw'>def</span> <span class='id banner'>banner</span><span class='lparen'>(</span><span class='id text'>text</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@banner</span> <span class='op'>=</span> <span class='id text'>text</span> <span class='kw'>if</span> <span class='id text'>text</span>
+  <span class='ivar'>@banner</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="commands-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="commands-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>commands</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 47</span>
+
+<span class='kw'>def</span> <span class='id commands'>commands</span>
+  <span class='ivar'>@commands</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="longest_flag=-instance_method"></span>
+      <span id="longest_flag-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="longest_flag-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>longest_flag</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The length of the longest flag slop knows of</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The length of the longest flag slop knows of</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id longest_flag'>longest_flag</span>
+  <span class='ivar'>@longest_flag</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="options-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="options-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Slop/Options.html" title="Slop::Options (class)">Options</a></span></tt>) <strong>options</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Slop/Options.html" title="Slop::Options (class)">Options</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id options'>options</span>
+  <span class='ivar'>@options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="parse-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="Slop (class)">Slop</a></span></tt>) <strong>parse</strong>(items = ARGV, options = {}, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Parses the items from a CLI format into a friendly object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>Specifying three options to parse:</p>
+</div></h4>
+      <pre class="example code"><span class='id opts'>opts</span> <span class='op'>=</span> <span class='const'>Slops</span><span class='period'>.</span><span class='id parse'>parse</span> <span class='kw'>do</span>
+  <span class='id on'>on</span> <span class='symbol'>:v</span><span class='comma'>,</span> <span class='symbol'>:verbose</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Enable verbose mode</span><span class='tstring_end'>'</span></span>
+  <span class='id on'>on</span> <span class='symbol'>:n</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span>    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Your name</span><span class='tstring_end'>'</span></span>
+  <span class='id on'>on</span> <span class='symbol'>:a</span><span class='comma'>,</span> <span class='symbol'>:age</span><span class='comma'>,</span>     <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Your age</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>items</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>ARGV</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Items to parse into options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Slop (class)">Slop</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Returns an instance of Slop.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 31</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id parse'>parse</span><span class='lparen'>(</span><span class='id items'>items</span><span class='op'>=</span><span class='const'>ARGV</span><span class='comma'>,</span> <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id initialize_and_parse'>initialize_and_parse</span> <span class='id items'>items</span><span class='comma'>,</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='id options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="parse!-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="Slop (class)">Slop</a></span></tt>) <strong>parse!</strong>(items = ARGV, options = {}, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Identical to <span class='object_link'><a href="#parse-class_method" title="Slop.parse (method)">parse</a></span>, but removes parsed options from the
+original Array.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Slop (class)">Slop</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Returns an instance of Slop.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id parse!'>parse!</span><span class='lparen'>(</span><span class='id items'>items</span><span class='op'>=</span><span class='const'>ARGV</span><span class='comma'>,</span> <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id initialize_and_parse'>initialize_and_parse</span> <span class='id items'>items</span><span class='comma'>,</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='id options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="[]-instance_method">
+  
+    - (<tt>Object</tt>) <strong>[]</strong>(key) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='get-instance_method'>get</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value associated with that option. If an
+option doesn't exist, a command will instead be searched for</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='id opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; &quot;Emily&quot;
+</span><span class='id opts'>opts</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;Emily&quot;</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Option symbol.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Returns the value associated with that option. If an
+option doesn't exist, a command will instead be searched for</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+165
+166
+167
+168</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 165</span>
+
+<span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
+  <span class='id option'>option</span> <span class='op'>=</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='id key'>key</span><span class='rbracket'>]</span>
+  <span class='id option'>option</span> <span class='op'>?</span> <span class='id option'>option</span><span class='period'>.</span><span class='id argument_value'>argument_value</span> <span class='op'>:</span> <span class='ivar'>@commands</span><span class='lbracket'>[</span><span class='id key'>key</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="command-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Slop (class)">Slop</a></span></tt>) <strong>command</strong>(label, options = {}, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Namespace options depending on what command is executed</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='id opts'>opts</span> <span class='op'>=</span> <span class='const'>Slop</span><span class='period'>.</span><span class='id new'>new</span> <span class='kw'>do</span>
+  <span class='id command'>command</span> <span class='symbol'>:create</span> <span class='kw'>do</span>
+    <span class='id on'>on</span> <span class='symbol'>:v</span><span class='comma'>,</span> <span class='symbol'>:verbose</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='comment'># ARGV is `create -v`
+</span><span class='id opts'>opts</span><span class='period'>.</span><span class='id commands'>commands</span><span class='lbracket'>[</span><span class='symbol'>:create</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id verbose?'>verbose?</span> <span class='comment'>#=&gt; true</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>label</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Slop (class)">Slop</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a new instance of Slop namespaced to +label+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 219</span>
+
+<span class='kw'>def</span> <span class='id command'>command</span><span class='lparen'>(</span><span class='id label'>label</span><span class='comma'>,</span> <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@commands</span><span class='lbracket'>[</span><span class='id label'>label</span><span class='rbracket'>]</span>
+    <span class='id raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>command `</span><span class='embexpr_beg'>#{</span><span class='id label'>label</span><span class='rbrace'>}</span><span class='tstring_content'>` already exists</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id slop'>slop</span> <span class='op'>=</span> <span class='const'>Slop</span><span class='period'>.</span><span class='id new'>new</span> <span class='ivar'>@sloptions</span><span class='period'>.</span><span class='id merge'>merge</span> <span class='id options'>options</span>
+  <span class='ivar'>@commands</span><span class='lbracket'>[</span><span class='id label'>label</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id slop'>slop</span>
+
+  <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+    <span class='id block'>block</span><span class='period'>.</span><span class='id arity'>arity</span> <span class='op'>==</span> <span class='int'>1</span> <span class='op'>?</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id slop'>slop</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id slop'>slop</span><span class='period'>.</span><span class='id instance_eval'>instance_eval</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id slop'>slop</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="each-instance_method">
+  
+    - (<tt>Object</tt>) <strong>each</strong>(&amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Enumerable interface</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+155
+156
+157</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 155</span>
+
+<span class='kw'>def</span> <span class='id each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@options</span><span class='period'>.</span><span class='id each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="inspect-instance_method">
+  
+    - (<tt>Object</tt>) <strong>inspect</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+314
+315
+316
+317</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 314</span>
+
+<span class='kw'>def</span> <span class='id inspect'>inspect</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Slop config_options=</span><span class='embexpr_beg'>#{</span><span class='ivar'>@sloptions</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'>\n  </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+  <span class='id options'>options</span><span class='period'>.</span><span class='id map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:inspect</span><span class='rparen'>)</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n  </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n&gt;</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="on_empty-instance_method">
+  
+    - (<tt>Object</tt>) <strong>on_empty</strong>(obj = nil, &amp;block) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='on_empty=-instance_method'>on_empty=</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Trigger an event when Slop has no values to parse</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='const'>Slop</span><span class='period'>.</span><span class='id parse'>parse</span> <span class='kw'>do</span>
+  <span class='id on_empty'>on_empty</span> <span class='lbrace'>{</span> <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>No argument given!</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>obj</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>, <tt>#call</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The object (which can be anything
+responding to <code>call</code>)</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+243
+244
+245</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 243</span>
+
+<span class='kw'>def</span> <span class='id on_empty'>on_empty</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@on_empty</span> <span class='op'>||=</span> <span class='lparen'>(</span><span class='id obj'>obj</span> <span class='op'>||</span> <span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="on_noopts-instance_method">
+  
+    - (<tt>Object</tt>) <strong>on_noopts</strong>(obj = nil, &amp;block) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='on_optionless-instance_method'>on_optionless</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Trigger an event when the arguments contain no options</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='const'>Slop</span><span class='period'>.</span><span class='id parse'>parse</span> <span class='kw'>do</span>
+  <span class='id on_noopts'>on_noopts</span> <span class='lbrace'>{</span> <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>No options here!</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>obj</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>, <tt>#call</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The object to be triggered (anything
+responding to <code>call</code>)</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.6.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+257
+258
+259</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 257</span>
+
+<span class='kw'>def</span> <span class='id on_noopts'>on_noopts</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@on_noopts</span> <span class='op'>||=</span> <span class='lparen'>(</span><span class='id obj'>obj</span> <span class='op'>||</span> <span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="option-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Slop/Option.html" title="Slop::Option (class)">Slop::Option</a></span></tt>) <strong>option</strong>(*args, &amp;block) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='opt-instance_method'>opt</span>, <span id='on-instance_method'>on</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Specify an option with a short or long version, description and type.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='id opts'>opts</span> <span class='op'>=</span> <span class='const'>Slop</span><span class='period'>.</span><span class='id parse'>parse</span> <span class='kw'>do</span>
+  <span class='id on'>on</span> <span class='symbol'>:n</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Your username</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>true</span> <span class='comment'># Required argument
+</span>  <span class='id on'>on</span> <span class='symbol'>:a</span><span class='comma'>,</span> <span class='symbol'>:age</span><span class='comma'>,</span>  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Your age (optional)</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:optional</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
+  <span class='id on'>on</span> <span class='symbol'>:g</span><span class='comma'>,</span> <span class='symbol'>:gender</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Your gender</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:optional</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
+  <span class='id on'>on</span> <span class='symbol'>:V</span><span class='comma'>,</span> <span class='symbol'>:verbose</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Run in verbose mode</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
+  <span class='id on'>on</span> <span class='symbol'>:P</span><span class='comma'>,</span> <span class='symbol'>:people</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Your friends</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='const'>Array</span>
+  <span class='id on'>on</span> <span class='symbol'>:h</span><span class='comma'>,</span> <span class='symbol'>:help</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Print this help screen</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span>
+    <span class='id puts'>puts</span> <span class='id help'>help</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>*</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Option configuration.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Slop/Option.html" title="Slop::Option (class)">Slop::Option</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+192
+193
+194
+195
+196
+197
+198
+199
+200</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 192</span>
+
+<span class='kw'>def</span> <span class='id option'>option</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id options'>options</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id last'>last</span><span class='period'>.</span><span class='id is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id args'>args</span><span class='period'>.</span><span class='id pop'>pop</span> <span class='op'>:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='id short'>short</span><span class='comma'>,</span> <span class='id long'>long</span><span class='comma'>,</span> <span class='id desc'>desc</span><span class='comma'>,</span> <span class='id arg'>arg</span> <span class='op'>=</span> <span class='id clean_options'>clean_options</span> <span class='id args'>args</span>
+  <span class='id option'>option</span> <span class='op'>=</span> <span class='const'>Option</span><span class='period'>.</span><span class='id new'>new</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id short'>short</span><span class='comma'>,</span> <span class='id long'>long</span><span class='comma'>,</span> <span class='id desc'>desc</span><span class='comma'>,</span> <span class='id arg'>arg</span><span class='comma'>,</span> <span class='id options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span>
+  <span class='ivar'>@options</span> <span class='op'>&lt;&lt;</span> <span class='id option'>option</span>
+
+  <span class='id option'>option</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="parse-instance_method">
+  
+    - (<tt>Object</tt>) <strong>parse</strong>(items = ARGV, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Parse a list of options, leaving the original Array unchanged.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>items</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>ARGV</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>A list of items to parse</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143
+144
+145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 143</span>
+
+<span class='kw'>def</span> <span class='id parse'>parse</span><span class='lparen'>(</span><span class='id items'>items</span><span class='op'>=</span><span class='const'>ARGV</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id parse_items'>parse_items</span> <span class='id items'>items</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="parse!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>parse!</strong>(items = ARGV, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Parse a list of options, removing parsed options from the original Array.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>items</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>ARGV</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>A list of items to parse</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+150
+151
+152</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 150</span>
+
+<span class='kw'>def</span> <span class='id parse!'>parse!</span><span class='lparen'>(</span><span class='id items'>items</span><span class='op'>=</span><span class='const'>ARGV</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id parse_items'>parse_items</span> <span class='id items'>items</span><span class='comma'>,</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="present?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>present?</strong>(option_name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Check if an option is specified in the parsed list. Does the same as
+Slop#option? but a convenience method for unacceptable method names.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>The</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>object name to check</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>true if this option is present, false otherwise</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+295
+296
+297</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 295</span>
+
+<span class='kw'>def</span> <span class='id present?'>present?</span><span class='lparen'>(</span><span class='id option_name'>option_name</span><span class='rparen'>)</span>
+  <span class='op'>!</span><span class='op'>!</span><span class='id get'>get</span><span class='lparen'>(</span><span class='id option_name'>option_name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_hash-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>to_hash</strong>(symbols = false) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='to_h-instance_method'>to_h</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the parsed list into a option/value hash.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='id opts'>opts</span><span class='period'>.</span><span class='id to_hash'>to_hash</span> <span class='comment'>#=&gt; { 'name' =&gt; 'Emily' }
+</span>
+<span class='comment'># symbols!
+</span><span class='id opts'>opts</span><span class='period'>.</span><span class='id to_hash'>to_hash</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span> <span class='comment'>#=&gt; { :name =&gt; 'Emily' }</span></pre>
+    
+  </div>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+270
+271
+272</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 270</span>
+
+<span class='kw'>def</span> <span class='id to_hash'>to_hash</span><span class='lparen'>(</span><span class='id symbols'>symbols</span><span class='op'>=</span><span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='ivar'>@options</span><span class='period'>.</span><span class='id to_hash'>to_hash</span> <span class='id symbols'>symbols</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_s-instance_method">
+  
+    - (<tt>String</tt>) <strong>to_s</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='help-instance_method'>help</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the banner followed by available options listed on the next line.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='id opts'>opts</span> <span class='op'>=</span> <span class='const'>Slop</span><span class='period'>.</span><span class='id parse'>parse</span> <span class='kw'>do</span>
+  <span class='id banner'>banner</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Usage - ruby foo.rb [arguments]</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id on'>on</span> <span class='symbol'>:v</span><span class='comma'>,</span> <span class='symbol'>:verbose</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Enable verbose mode</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+<span class='id puts'>puts</span> <span class='id opts'>opts</span></pre>
+    
+  </div>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Help text.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+308
+309
+310
+311</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/slop.rb', line 308</span>
+
+<span class='kw'>def</span> <span class='id to_s'>to_s</span>
+  <span class='id banner'>banner</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@banner</span><span class='rbrace'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@banner</span>
+  <span class='lparen'>(</span><span class='id banner'>banner</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id options'>options</span><span class='period'>.</span><span class='id to_help'>to_help</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Thu Jun  9 17:04:33 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

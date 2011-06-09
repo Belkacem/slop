@@ -1,0 +1,82 @@
+/* Override this file with custom rules */
+body {
+    font: 14px helvetica,arial,freesans,clean,sans-serif;
+}
+
+code {
+    font: 12px 'Bitstream Vera Sans Mono','Courier',monospace;
+}
+
+#filecontents pre.code, .docstring pre.code, .examples pre.example.code {
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    font: 12px 'Bitstream Vera Sans Mono','Courier',monospace;
+    padding: 10px;
+}
+
+table.source_code, table.source_code pre.code {
+    font: 13px 'Bitstream Vera Sans Mono','Courier',monospace;
+}
+
+#content .summary_signature {
+    font: 11px 'Bitstream Vera Sans Mono','Courier',monospace;
+    padding: 4px 4px 3px 5px;
+    background: #FBFBFB;
+}
+
+ul.summary {
+    font-size: 0.9em;
+    margin-left: 0;
+}
+
+.summary_desc {
+    margin-top: 8px;
+    padding: 1px 0 5px 0;
+}
+
+a.summary_toggle {
+    font-size: 0.9em;
+}
+
+p.signature {
+    font: 13px 'Bitstream Vera Sans Mono','Courier',monospace;
+    background: #F0F9F6;
+}
+
+.tags h3, .tags .tags .examples h3 {
+    font-size: 0.9em
+}
+
+.tags ul li {
+    font-size: 0.9em;
+}
+
+.tags ul.option .inline ul {
+    padding: 3px 0 3px 20px;
+    font-size: 1.1em;
+}
+
+dl.box {
+    font-size: 0.9em;
+}
+
+dl.constants {
+    margin-left: 30px;
+}
+
+h2 {
+  padding: 0;
+  padding-bottom: 3px;
+  border-bottom: 1px #aaa solid;
+  font-size: 1.4em;
+  margin: 1.8em 0 0.9em;
+}
+
+.tags ul .name {
+    font: 12px 'Bitstream Vera Sans Mono','Courier',monospace;
+    font-weight: bold;
+}
+
+.tags ul .default tt {
+    font: 11px 'Bitstream Vera Sans Mono','Courier',monospace;
+}
