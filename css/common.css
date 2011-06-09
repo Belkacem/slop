@@ -5,6 +5,7 @@ body {
 
 code {
     font: 12px 'Bitstream Vera Sans Mono','Courier',monospace;
+    line-height: 1.4em;
 }
 
 #filecontents pre.code, .docstring pre.code, .examples pre.example.code {
@@ -12,6 +13,7 @@ code {
     background: #f8f8f8;
     font: 12px 'Bitstream Vera Sans Mono','Courier',monospace;
     padding: 10px;
+    line-height: 1.4em;
 }
 
 table.source_code, table.source_code pre.code {
