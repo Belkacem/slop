@@ -115,20 +115,9 @@ send the Slop object to <code>puts</code> or use the <code>help</code> method.</
 
 <p>You can also add a banner using the <code>banner</code> method</p>
 
-<pre class="code"><span class='id opts'>opts</span> <span class='op'>=</span> <span class='const'>Slop</span><span class='period'>.</span><span class='id parse'>parse</span>
-<span class='id opts'>opts</span><span class='period'>.</span><span class='id banner'>banner</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Usage: foo.rb [options]</span><span class='tstring_end'>&quot;</span></span>
-</pre>
-
-<p>or</p>
-
 <pre class="code"><span class='id opts'>opts</span> <span class='op'>=</span> <span class='const'>Slop</span><span class='period'>.</span><span class='id parse'>parse</span> <span class='kw'>do</span>
   <span class='id banner'>banner</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Usage: foo.rb [options]</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
-</pre>
-
-<p>or</p>
-
-<pre class="code"><span class='id opts'>opts</span> <span class='op'>=</span> <span class='const'>Slop</span><span class='period'>.</span><span class='id new'>new</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Usage: foo.rb [options]</span><span class='tstring_end'>&quot;</span></span>
 </pre>
 
 <h2>Helpful Help</h2>
@@ -327,7 +316,7 @@ thing in Slop:</p>
 </div></div>
     
     <div id="footer">
-  Generated on Thu Jun  9 17:04:32 2011 by 
+  Generated on Sat Jun 11 09:11:12 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.1 (ruby-1.9.2).
 </div>
