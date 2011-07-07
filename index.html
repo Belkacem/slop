@@ -96,7 +96,7 @@ wiki page.</p>
 
 <p>You can also return your options as a Hash</p>
 
-<pre class="code"><span class='id opts'>opts</span><span class='period'>.</span><span class='id to_hash'>to_hash</span> <span class='comment'>#=&gt; {'name' =&gt; 'Lee Jarvis', 'verbose' =&gt; true, 'age' =&gt; nil, 'sex' =&gt; 'male'}
+<pre class="code"><span class='id opts'>opts</span><span class='period'>.</span><span class='id to_hash'>to_hash</span> <span class='comment'>#=&gt; {:name =&gt; 'Lee Jarvis', :verbose =&gt; true, :age =&gt; nil, :sex =&gt; 'male'}
 </span></pre>
 
 <p>If you want some pretty output for the user to see your options, you can just
@@ -144,7 +144,7 @@ end
 
 <p>Slop's pretty good at parsing, let's take a look at what it'll extract for you</p>
 
-<pre class="code"><span class='const'>Slop</span><span class='period'>.</span><span class='id parse'>parse</span> <span class='kw'>do</span>
+<pre class="code"><span class='const'>Slop</span><span class='period'>.</span><span class='id parse'>parse</span><span class='lparen'>(</span><span class='symbol'>:multiple_switches</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id on'>on</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>s</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>server</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>true</span>
   <span class='id on'>on</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>p</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>port</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:integer</span>
   <span class='id on'>on</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>username</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:matches</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[^a-zA-Z]+$</span><span class='regexp_end'>/</span></span>
@@ -160,10 +160,10 @@ end
 <p>Here's what we'll get back</p>
 
 <pre class="code"><span class='lbrace'>{</span>
-    <span class='symbol'>:server</span><span class='op'>=&gt;</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ftp://foobar.com</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-    <span class='symbol'>:port</span><span class='op'>=&gt;</span><span class='int'>1234</span><span class='comma'>,</span>
-    <span class='symbol'>:username</span><span class='op'>=&gt;</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FooBar</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-    <span class='symbol'>:password</span><span class='op'>=&gt;</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hello there</span><span class='tstring_end'>&quot;</span></span>
+    <span class='symbol'>:server</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ftp://foobar.com</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='int'>1234</span><span class='comma'>,</span>
+    <span class='symbol'>:username</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FooBar</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hello there</span><span class='tstring_end'>&quot;</span></span>
 <span class='rbrace'>}</span>
 </pre>
 
@@ -223,21 +223,28 @@ to return a false value.</p>
 <h2>Short Switches</h2>
 
 <p>Want to enable multiple switches at once like rsync does? By default Slop will
-parse <code>-abcd</code> as the option <code>a</code> with the argument <code>bcd</code>, this can be disabled
-by passing the <code>:multiple_switches</code> option to a new Slop object.</p>
+parse <code>-abc</code> as the options <code>a</code> <code>b</code> and <code>c</code> and set their values to true. If
+you would like to disable this, you can pass <code>multiple_switches =&gt; false</code> to
+a new Slop object. In which case Slop will then parse <code>-fbar</code> as the option
+<code>f</code> with the argument value <code>bar</code>.</p>
 
-<pre class="code"><span class='id opts'>opts</span> <span class='op'>=</span> <span class='const'>Slop</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:strict</span><span class='comma'>,</span> <span class='symbol'>:multiple_switches</span><span class='rparen'>)</span> <span class='kw'>do</span>
+<pre class="code"><span class='const'>Slop</span><span class='period'>.</span><span class='id parse'>parse</span> <span class='kw'>do</span>
   <span class='id on'>on</span> <span class='symbol'>:a</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>First switch</span><span class='tstring_end'>'</span></span>
   <span class='id on'>on</span> <span class='symbol'>:b</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Second switch</span><span class='tstring_end'>'</span></span>
   <span class='id on'>on</span> <span class='symbol'>:c</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Third switch</span><span class='tstring_end'>'</span></span>
 <span class='kw'>end</span>
 
-<span class='id opts'>opts</span><span class='period'>.</span><span class='id parse'>parse</span>
-
 <span class='comment'># Using `-ac`
 </span><span class='id opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:a</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; true
 </span><span class='id opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:b</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; false
 </span><span class='id opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:c</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; true
+</span>
+<span class='const'>Slop</span><span class='period'>.</span><span class='id parse'>parse</span><span class='lparen'>(</span><span class='symbol'>:multiple_switches</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id on'>on</span> <span class='symbol'>:a</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Some switch</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>true</span>
+<span class='kw'>end</span>
+
+<span class='comment'># Using `ahello`
+</span><span class='id opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:a</span><span class='rbracket'>]</span> <span class='comment'>#=&gt; 'hello'
 </span></pre>
 
 <h2>Lists</h2>
@@ -311,14 +318,14 @@ thing in Slop:</p>
   <span class='id on'>on</span> <span class='symbol'>:a</span><span class='comma'>,</span> <span class='symbol'>:age</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Your age</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:as</span> <span class='op'>=&gt;</span> <span class='symbol'>:int</span>
 <span class='kw'>end</span>
 
-<span class='id opts'>opts</span><span class='period'>.</span><span class='id to_hash'>to_hash</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span> <span class='comment'>#=&gt; { :name =&gt; 'lee', :age =&gt; 105 }
+<span class='id opts'>opts</span><span class='period'>.</span><span class='id to_hash'>to_hash</span> <span class='comment'>#=&gt; { :name =&gt; 'lee', :age =&gt; 105 }
 </span></pre>
 </div></div>
     
     <div id="footer">
-  Generated on Sat Jun 11 09:11:12 2011 by 
+  Generated on Thu Jul  7 15:06:22 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.1 (ruby-1.9.2).
+  0.7.2 (ruby-1.9.2).
 </div>
 
   </body>

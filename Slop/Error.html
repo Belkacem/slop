@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-  Exception: Slop::InvalidArgumentError
+  Exception: Slop::Error
   
     &mdash; Slop - Option gathering made easy
   
@@ -33,10 +33,10 @@
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (I)</a> &raquo; 
+    <a href="../_index.html">Index (E)</a> &raquo; 
     <span class='title'><span class='object_link'><a href="../Slop.html" title="Slop (class)">Slop</a></span></span>
      &raquo; 
-    <span class="title">InvalidArgumentError</span>
+    <span class="title">Error</span>
   
   
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -56,7 +56,7 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><h1>Exception: Slop::InvalidArgumentError
+    <div id="content"><h1>Exception: Slop::Error
   
   
   
@@ -66,16 +66,14 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName"><span class='object_link'><a href="Error.html" title="Slop::Error (class)">Error</a></span></span>
+      <span class="inheritName">StandardError</span>
       
         <ul class="fullTree">
           <li>Object</li>
           
             <li class="next">StandardError</li>
           
-            <li class="next"><span class='object_link'><a href="Error.html" title="Slop::Error (class)">Error</a></span></li>
-          
-            <li class="next">Slop::InvalidArgumentError</li>
+            <li class="next">Slop::Error</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -98,34 +96,26 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>Raised when an option specifies the <code>:match</code> attribute and this
-options argument does not match this regexp</p>
+    <p>Slops standard Error class. All exception classes should
+inherit from this class</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="InvalidArgumentError.html" title="Slop::InvalidArgumentError (class)">InvalidArgumentError</a></span>, <span class='object_link'><a href="InvalidOptionError.html" title="Slop::InvalidOptionError (class)">InvalidOptionError</a></span>, <span class='object_link'><a href="MissingArgumentError.html" title="Slop::MissingArgumentError (class)">MissingArgumentError</a></span>, <span class='object_link'><a href="MissingOptionError.html" title="Slop::MissingOptionError (class)">MissingOptionError</a></span></p>
 </div>
 
-  
-  
-  
-  
+
   
 
 
   
-  
-  
-  
 
 
-  
-  
-  
-  
-  
   
 
 </div>
