@@ -1,7 +1,7 @@
 class Slop
   include Enumerable
 
-  # @return [String] The current version string
+  # Current version String
   VERSION = '2.4.0'
 
   # Slops standard Error class. All exception classes should
@@ -25,56 +25,27 @@ class Slop
   # Each option specified in `Slop#opt` creates an instance of this class
   class Option < Struct.new(:short_flag, :long_flag, :description, :tail, :match, :help, :required, :forced, :count)
 
-    # @param [Slop] slop The Slop object this Option belongs to
+    # slop        - The Slop object this option belongs to.
+    # short       - The short flag String or Symbol representing this option.
+    # long        - The long flag String or Symbol representing this option.
+    # description - A description String.
+    # argument    - True if this option takes an argument, false otherwise.
     #
-    # @param [String, #to_s] short The short flag representing this Option
-    #   without prefix (ie: `a`)
-    #
-    # @param [String, #to_s] long The long flag representing this Option
-    #   without the prefix (ie: `foo`)
-    #
-    # @param [String] description This options description
-    #
-    # @param [Boolean] argument True if this option takes an argument
-    #
-    # @option options [Boolean] :optional
-    #   * When true, this option takes an optional argument, ie an argument
-    #     does not **have** to be supplied.
-    #
-    # @option options [Boolean] :argument
-    #   * True if this option takes an argument.
-    #
-    # @option options [Object] :default
-    #   * The default value for this option when no argument is given
-    #
-    # @option options [Proc, #call] :callback
-    #   * The callback object, used instead of passing a block to this option
-    #
-    # @option options [String, #to_s] :delimiter (',')
-    #   * A delimiter string when processing this option as a list
-    #
-    # @option options [Integer] :limit (0)
-    #   * A limit, used when processing this option as a list
-    #
-    # @option options [Boolean] :tail (false)
-    #   * When true, this option will be grouped at the bottom of the help
-    #     text instead of in order of processing
-    #
-    # @option options [Regexp] :match
-    #   * A regular expression this option should match
-    #
-    # @option options [String, #to_s] :unless
-    #   * Used by `omit_exec` for omitting execution of this options callback
-    #     if another option exists
-    #
-    # @option options [Boolean, String] :help (true)
-    #   * If this option is a string, it'll be appended to the long flag
-    #     help text (before the description). When false, no help information
-    #     will be displayed for this option
-    #
-    # @option options [Boolean] :required (false)
-    #   * When true, this option is considered mandatory. That is, when not
-    #     supplied, Slop will raise a `MissingOptionError`
+    # options - Hash configuration options:
+    #           :optional  - True if this option takes an optional argument.
+    #           :argument  - True if this option takes an madatory argument.
+    #           :default   - The default value for this option when none is given.
+    #           :callback  - An callback object which responds to call.
+    #           :delimiter - A delimiter String when processing argument as a list.
+    #           :limit     - An Integer limit when processing argument as a list.
+    #           :tail      - True to group this option at the bottom of the help.
+    #           :match     - A Regexp this options argument should match.
+    #           :unless    - Omit execution of this options callback if the supplied
+    #                        String or Symbol exists as another option.
+    #           :help      - True if you want to display this option in the help
+    #                        text. If a String it will be appended to the help.
+    #           :required  - When true this option is considered mandatory. That is,
+    #                        when not supplied, Slop will raise an exception.
     def initialize(slop, short, long, description, argument, options, &blk)
       @slop = slop
 
