@@ -77,28 +77,26 @@ class Slop
       end
     end
 
-    # @return [Boolean] true if this option expects an argument
+    # Returns true if this option expects an argument.
     def expects_argument?
       @argument || @options[:argument] || @options[:optional] == false
     end
 
-    # @return [Boolean] true if this option accepts an optional argument
+    # Returns true if this option accepts an optional argument.
     def accepts_optional_argument?
       @options[:optional] || @options[:optional_argument]
     end
 
-    # @return [String] either the long or short flag for this option
+    # Returns either the long or short flag String for this option.
     def key
       long_flag || short_flag
     end
 
-    # Set this options argument value.
+    # Set this options argument value. If this options argument type is expected
+    # to be an Array, this method will split the value and concat elements into
+    # the original argument value.
     #
-    # If this options argument type is expected to be an Array, this
-    # method will split the value and concat elements into the original
-    # argument value
-    #
-    # @param [Object] value The value to set this options argument to
+    # value - The value to set this options argument to.
     def argument_value=(value)
       if @argument_type == 'array'
         @argument_value ||= []
@@ -111,8 +109,8 @@ class Slop
       end
     end
 
-    # @return [Object] the argument value after it's been cast
-    #   according to the `:as` option
+    # Returns the argument value Object after it's been cast according to
+    #   the :as option.
     def argument_value
       return @argument_value if forced
       # Check for count first to prefer 0 over nil
@@ -134,24 +132,24 @@ class Slop
     end
 
     # Force an argument value, used when the desired argument value
-    # is negative (false or nil)
+    # is negative (false or nil).
     #
-    # @param [Object] value
+    # value - The Object to force this argument value with.
     def force_argument_value(value)
       @argument_value = value
       self.forced = true
     end
 
-    # Execute the block or callback object associated with this Option
+    # Execute the block or callback object associated with this Option.
     #
-    # @param [Object] The object to be sent to `:call`
+    # obj - The Object to be sent to the call() method.
     def call(obj=nil)
       @callback.call(obj) if @callback.respond_to?(:call)
     end
 
-    # @param [Array] items The original array of objects passed to `Slop.new`
-    # @return [Boolean] true if this options `:unless` argument exists
-    #   inside *items*
+    # items - The original Array of objects passed to Slop.new().
+    #
+    # Returns true if this options :unless argument exists inside items
     def omit_exec?(items)
       items.any? do |item|
         item.to_s.sub(/\A--?/, '') == @options[:unless].to_s.sub(/\A--?/, '')
@@ -161,8 +159,7 @@ class Slop
     # This option in a nice pretty string, including a short flag, long
     # flag, and description (if they exist).
     #
-    # @see Slop#help
-    # @return [String]
+    # Returns the String help text for this option.
     def to_s
       out = "    "
       out += short_flag ? "-#{short_flag}, " : ' ' * 4
@@ -184,7 +181,7 @@ class Slop
       "#{out}#{description}"
     end
 
-    # @return [String]
+    # Returns the String inspection text.
     def inspect
       "#<Slop::Option short_flag=#{short_flag.inspect} " +
       "long_flag=#{long_flag.inspect} argument=#{@argument.inspect} " +
@@ -193,6 +190,11 @@ class Slop
 
     private
 
+    # Extracts a range from a String.
+    #
+    # value - The String to be extracted.
+    #
+    # Returns a Range object if one could be extracted.
     def value_to_range(value)
       case value.to_s
       when /\A(-?\d+?)(\.\.\.?|-|,)(-?\d+)\z/
@@ -219,12 +221,15 @@ class Slop
     # method an Integer, it will work as an Array usually would, fetching
     # the Slop::Option at this index.
     #
-    # @param [Object] flag The short/long flag representing the option
-    # @example
+    # flag - The short/long flag Object representing this option.
+    #
+    # Examples
+    #
     #   opts = Slop.parse { on :v, "Verbose mode" }
     #   opts.options[:v] #=> Option
     #   opts.options[:v].description #=> "Verbose mode"
-    # @return [Option] the option assoiated with this flag
+    #
+    # Returns The Option associated with this flag.
     def [](flag)
       if flag.is_a? Integer
         super
@@ -236,33 +241,38 @@ class Slop
     end
   end
 
-  # Parses the items from a CLI format into a friendly object
+  # Parses the items from a CLI format into a friendly object.
   #
-  # @param [Array] items Items to parse into options.
-  # @example Specifying three options to parse:
+  # items   - The Array of items to parse.
+  # options - The Hash of configuration options.
+  #
+  # Example
+  #
   #  opts = Slops.parse do
   #    on :v, :verbose, 'Enable verbose mode'
   #    on :n, :name,    'Your name'
   #    on :a, :age,     'Your age'
   #  end
-  # @return [Slop] Returns an instance of Slop
+  #
+  # Returns a new instance of Slop.
   def self.parse(items=ARGV, options={}, &block)
     initialize_and_parse items, false, options, &block
   end
 
-  # Identical to {Slop.parse}, but removes parsed options from the
-  # original Array
+  # Identical to Slop.parse, but removes parsed options from the
+  # original Array.
   #
-  # @return [Slop] Returns an instance of Slop
+  # Returns a new instance of Slop.
   def self.parse!(items=ARGV, options={}, &block)
     initialize_and_parse items, true, options, &block
   end
 
-  # Build options from an optspec string
+  # Build options from an optspec string.
   #
-  # @param [String] optspec The option spec string
-  # @param [Array]  options A list of options to forward to Slop.new
-  # @return [Slop]  A new instance of Slop
+  # optspec - The option spec String to parse.
+  # options - An Array of options to forward to Slop.new().
+  #
+  # Returns A new instance of Slop.
   def self.optspec(optspec, *options)
     if optspec[/^--+$/]
       banner, optspec = optspec.split(/^--+$/, 2)
@@ -282,81 +292,45 @@ class Slop
     opts
   end
 
-  # @return [Options]
+  # Returns a Hash of configuration options.
   attr_reader :options
 
-  # @return [Hash]
+  # Returns a Hash of commands and Slop instances.
   attr_reader :commands
 
-  # @overload banner=(string)
-  #   Set the banner
-  #   @param [String] string The text to set the banner to
+  # Set the banner String.
   attr_writer :banner
 
-  # @overload summary=(string)
-  #   Set the summary
-  #   @param [String] string The text to set the summary to
+  # Set the summary text String.
   attr_writer :summary
 
-  # @overload description=(string)
-  #   Set the description
-  #   @param [String] string The text to set the description to
+  # Set the description text String.
   attr_writer :description
 
-  # @return [Integer] The length of the longest flag slop knows of
+  # Returns The Integer length of the longest flag slop knows of.
   attr_accessor :longest_flag
 
-  # @return [Array] A list of aliases this command uses
+  # Returns An Array of aliases this command uses.
   attr_accessor :aliases
 
-  # @option opts [Boolean] :help
-  #   * Automatically add the `help` option
-  #
-  # @option opts [Boolean] :strict
-  #   * Raises when a non listed option is found, false by default
-  #
-  # @option opts [Boolean] :multiple_switches
-  #   * Allows `-abc` to be processed as the options 'a', 'b', 'c' and will
-  #     force their argument values to true. By default Slop with parse this
-  #     as 'a' with the argument 'bc'
-  #
-  # @option opts [String] :banner
-  #   * The banner text used for the help
-  #
-  # @option opts [Proc, #call] :on_empty
-  #   * Any object that respondes to `call` which is executed when Slop has
-  #     no items to parse
-  #
-  # @option opts [IO, #puts] :io ($stderr)
-  #   * An IO object for writing to when :help => true is used
-  #
-  # @option opts [Boolean] :exit_on_help (true)
-  #   * When false and coupled with the :help option, Slop will not exit
-  #     inside of the `help` option
-  #
-  # @option opts [Boolean] :ignore_case (false)
-  #   * Ignore options case
-  #
-  # @option opts [Proc, #call] :on_noopts
-  #   * Trigger an event when no options are found
-  #
-  # @option opts [Boolean] :autocreate (false)
-  #   * Autocreate options depending on the Array passed to {#parse}
-  #
-  # @option opts [Boolean] :arguments (false)
-  #   * Set to true to enable all specified options to accept arguments
-  #     by default
-  #
-  # @option opts [Array] :aliases ([])
-  #   * Primary uses by commands to implement command aliases
-  #
-  # @option opts [Boolean] :completion (true)
-  #   * When true, commands will be auto completed. Ie `foobar` will be
-  #     executed simply when `foo` `fo` or `foob` are used
-  #
-  # @option options [Boolean] :all_accept_arguments (false)
-  #   * When true, every option added will take an argument, this saves
-  #     having to enable it for every option
+  # opts - An Array or Hash of configuration options:
+  #        :help                 - Automatically add the help Option.
+  #        :strict               - Force exception raising when an option is not
+  #                                found (default: false).
+  #        :multiple_switches    - When true, allow -abc to be processed as
+  #                                individual options (default: true)
+  #        :banner               - The banner String
+  #        :on_empty             - An Object responding to call() for callback when
+  #                                there are no arguments or options to parse.
+  #        :io                   - The IO object to use for output (default: $stderr).
+  #        :exit_on_help         - When false and partnered with the :help option
+  #                                Slop will not exit after help (default: true).
+  #        :ignore_case          - Ignore options case (default: false).
+  #        :on_noopts            - Callback trigger when no options are found.
+  #        :autocreate           - Autocreate options based on parsed items.
+  #        :arguments            - When true, all options will accept arguments (default: false)
+  #        :aliases              - An Array of aliases when using commands (default: []).
+  #        :completion           - When true, commands will be auto completed.
   def initialize(*opts, &block)
     sloptions = opts.last.is_a?(Hash) ? opts.pop : {}
     sloptions[:banner] = opts.shift if opts[0].respond_to?(:to_str)
@@ -393,86 +367,99 @@ class Slop
     end
   end
 
-  # Set or return banner text
+  # Set or return banner text.
   #
-  # @param [String] text Displayed banner text
-  # @example
+  # text - The String to set the banner text.
+  #
+  # Example
+  #
   #   opts = Slop.parse do
   #     banner "Usage - ruby foo.rb [arguments]"
   #   end
-  # @return [String] The current banner
+  #
+  # Returns The current banner String.
   def banner(text=nil)
     @banner = text if text
     @banner
   end
 
-  # Set or return the summary
+  # Set or return the summary.
   #
-  # @param [String] text Displayed summary text
-  # @example
+  # text - The String to set the summary text.
+  #
+  # Example
+  #
   #   opts = Slop.parse do
   #     summary "do stuff with more stuff"
   #   end
-  # @return [String] The current summary
+  #
+  # Returns The current summary String.
   def summary(text=nil)
     @summary = text if text
     @summary
   end
 
-  # Set or return the description
+  # Set or return the description.
   #
-  # @param [String] text Displayed description text
-  # @example
+  # text - The String to set the description text.
+  #
+  # Example
+  #
   #   opts = Slop.parse do
   #     description "This command does a lot of stuff with other stuff."
   #   end
-  # @return [String] The current description
+  #
+  # Returns The current description String.
   def description(text=nil)
     @description = text if text
     @description
   end
 
-  # Parse a list of options, leaving the original Array unchanged
+  # Parse a list of options, leaving the original Array unchanged.
   #
-  # @param [Array] items A list of items to parse
+  # items - An Array of items to parse.
   def parse(items=ARGV, &block)
     parse_items items, &block
   end
 
-  # Parse a list of options, removing parsed options from the original Array
+  # Parse a list of options, removing parsed options from the original Array.
   #
-  # @param [Array] items A list of items to parse
+  # items - An Array of items to parse.
   def parse!(items=ARGV, &block)
     parse_items items, true, &block
   end
 
-  # Enumerable interface
+  # Enumerable interface.
   def each(&block)
     @options.each(&block)
   end
 
-  # @param [Symbol] key Option symbol
-  # @example
+  # key - Option Symbol.
+  #
+  # Example
+  #
   #   opts[:name] #=> "Emily"
   #   opts.get(:name) #=> "Emily"
-  # @return [Object] Returns the value associated with that option. If an
-  #   option doesn't exist, a command will instead be searched for
+  #
+  # Returns the Object associated with that option. If an
+  #   option doesn't exist, a command will instead be searched for.
   def [](key)
     option = @options[key]
     option ? option.argument_value : @commands[key]
   end
   alias get []
 
-  # Specify an option with a short or long version, description and type
+  # Specify an option with a short or long version, description and type.
   #
-  # @param [*] args Option configuration.
-  # @option args [Symbol, String] :short_flag Short option name.
-  # @option args [Symbol, String] :long_flag Full option name.
-  # @option args [String] :description Option description for use in Slop#help
-  # @option args [Boolean] :argument Specifies whether this option requires
-  #   an argument
-  # @option args [Hash] :options Optional option configurations.
-  # @example
+  # args - An Array of Objects to send to Option.new():
+  #   short_flag  - Short flag for this option.
+  #   long_flag   - Long flag for this option.
+  #   description - Description text String.
+  #   argument    - True if this option takes an argument.
+  #   options     - Any extra configuration options (optional).
+  #
+  # Example
+  #
   #   opts = Slop.parse do
   #     on :n, :name, 'Your username', true # Required argument
   #     on :a, :age,  'Your age (optional)', :optional => true
@@ -483,7 +470,8 @@ class Slop
   #       puts help
   #     end
   #   end
-  # @return [Slop::Option]
+  #
+  # Returns a new Slop::Option instance.
   def option(*args, &block)
     options = args.last.is_a?(Hash) ? args.pop : {}
     short, long, desc, arg, extras = clean_options(args)
@@ -499,11 +487,13 @@ class Slop
   alias opt option
   alias on option
 
-  # Namespace options depending on what command is executed
+  # Namespace options depending on what command is executed.
   #
-  # @param [Symbol, String] label
-  # @param [Hash] options
-  # @example
+  # label   - The Symbol or String label representing this command.
+  # options - A Hash of options to pass to Slop.new().
+  #
+  # Example
+  #
   #   opts = Slop.new do
   #     command :create do
   #       on :v, :verbose
@@ -512,9 +502,9 @@ class Slop
   #
   #   # ARGV is `create -v`
   #   opts.commands[:create].verbose? #=> true
-  # @since 1.5.0
-  # @raise [ArgumentError] When this command already exists
-  # @return [Slop] a new instance of Slop namespaced to +label+
+  #
+  # Returns a new instance of Slop namespaced to this label.
+  # Raises ArgumentError if this command already exists.
   def command(label, options={}, &block)
     if @commands.key?(label)
       raise ArgumentError, "command `#{label}` already exists"
@@ -533,37 +523,40 @@ class Slop
     slop
   end
 
-  # Trigger an event when Slop has no values to parse
+  # Trigger an event when Slop has no values to parse.
   #
-  # @param [Object, #call] obj The object (which can be anything
-  #   responding to `call`)
-  # @example
+  # obj - An option object which responds to call() to be triggered when there are
+  #       no options or arguments to parse.
+  #
+  # Example
+  #
   #   Slop.parse do
   #     on_empty { puts 'No argument given!' }
   #   end
-  # @since 1.5.0
   def on_empty(obj=nil, &block)
     @on_empty ||= (obj || block)
   end
   alias on_empty= on_empty
 
-  # Trigger an event when the arguments contain no options
+  # Trigger an event when the arguments contain no options.
   #
-  # @param [Object, #call] obj The object to be triggered (anything
-  #   responding to `call`)
-  # @example
+  # obj - An option object which responds to call() to be triggered when there are
+  #       no options to parse.
+  #
+  # Example
+  #
   #   Slop.parse do
   #     on_noopts { puts 'No options here!' }
   #   end
-  # @since 1.6.0
   def on_noopts(obj=nil, &block)
     @on_noopts ||= (obj || block)
   end
   alias on_optionless on_noopts
 
-  # Add an execution block (for commands)
+  # Add an execution block (for commands).
   #
-  # @example
+  # Example
+  #
   #   opts = Slop.new do
   #     command :foo do
   #       on :v, :verbose
@@ -573,10 +566,7 @@ class Slop
   #   end
   #   opts.parse %w[foo --verbose] #=> true
   #
-  # @param [Array] args The list of arguments to send to this command
-  #   is invoked
-  # @since 1.8.0
-  # @yield [Slop] an instance of Slop for this command
+  # args - The Array of arguments to send to this command.
   def execute(args=[], &block)
     if block_given?
       @execution_block = block
@@ -585,14 +575,18 @@ class Slop
     end
   end
 
-  # Returns the parsed list into a option/value hash
+  # Fetch the parsed list as a hash.
   #
-  # @example
+  # symbols - When true, keys will be symbols. Strings otherwise.
+  #
+  # Example
+  #
   #   opts.to_hash #=> { :name => 'Emily' }
   #
   #   # strings!
   #   opts.to_hash(false) #=> { 'name' => 'Emily' }
-  # @return [Hash]
+  #
+  # Returns a new Hash with parsed items.
   def to_hash(symbols=true)
     @options.reduce({}) do |hsh, option|
       key = option.key
