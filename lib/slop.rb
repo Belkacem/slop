@@ -597,9 +597,12 @@ class Slop
   end
   alias to_h to_hash
 
-  # Return parsed items as a new Class
+  # Turn this options keys and values into a struct.
   #
-  # @example
+  # name - The String or Symbol name of this class.
+  #
+  # Examples
+  #
   #   opts = Slop.new do
   #     on :n, :name, 'Persons name', true
   #     on :a, :age, 'Persons age', true, :as => :int
@@ -616,17 +619,16 @@ class Slop
   #   person.sex    #=> m
   #   person.admin  #=> true
   #
-  # @param [String] name The name of this class
-  # @return [Class] The new class, or nil if there are no options
-  # @since 2.0.0
+  # Returns The new class, or nil if there are no options.
   def to_struct(name=nil)
     hash = to_hash
     Struct.new(name, *hash.keys).new(*hash.values) unless hash.empty?
   end
 
-  # Fetch a list of options which were missing from the parsed list
+  # Fetch a list of options which were missing from the parsed list.
   #
-  # @example
+  # Examples
+  #
   #   opts = Slop.new do
   #     on :n, :name, 'Your name', true
   #     on :p, :password, 'Your password', true
@@ -636,22 +638,20 @@ class Slop
   #   opts.parse %w[ --name Lee ]
   #   opts.missing #=> ['password', 'a']
   #
-  # @return [Array] A list of options missing from the parsed string
-  # @since 2.1.0
+  # Returns An Array of options missing from the parsed string.
   def missing
     @options.select { |opt| not present?(opt.key) }.map(&:key)
   end
 
-  # Allows you to check whether an option was specified in the parsed list
+  # Allows you to check whether an option was specified in the parsed list.
   #
-  # Merely sugar for `present?`
+  # Examples
   #
-  # @example
   #   #== ruby foo.rb -v
   #   opts.verbose? #=> true
   #   opts.name?    #=> false
-  # @see Slop#present?
-  # @return [Boolean] true if this option is present, false otherwise
+  #
+  # Returns true if this option is present, false otherwise.
   def method_missing(meth, *args, &block)
     meth = meth.to_s
     if meth[-1] == ??
@@ -661,7 +661,7 @@ class Slop
     end
   end
 
-  # Override this method so we can check if an option? method exists
+  # Override this method so we can check if an option? method exists.
   def respond_to?(method)
     method = method.to_s
     if method[-1] == ?? and @options.any? { |o| o.key == method.chop }
@@ -671,27 +671,27 @@ class Slop
     end
   end
 
-  # Check if an option is specified in the parsed list
+  # Check if an option is specified in the parsed list. Does the same as option?()
+  # but a convenience method for unacceptable method names.
   #
-  # Does the same as Slop#option? but a convenience method for unacceptable
-  # method names
+  # option_names - A variable number of String or Symbol options to check.
   #
-  # @param [Object] The object name(s) to check
-  # @since 1.5.0
-  # @return [Boolean] true if these options are present, false otherwise
+  # Returns true if these options are present, false otherwise.
   def present?(*option_names)
     option_names.all? { |opt| @options[opt] && @options[opt].count > 0 }
   end
 
-  # Returns the banner followed by available options listed on the next line
+  # Fetch the banner followed by available options listed on the next line.
   #
-  # @example
+  # Examples
+  #
   #  opts = Slop.parse do
   #    banner "Usage - ruby foo.rb [arguments]"
   #    on :v, :verbose, "Enable verbose mode"
   #  end
   #  puts opts
-  # @return [String] Help text.
+  #
+  # Returns the String help text.
   def to_s
     parts = []
 
@@ -713,8 +713,7 @@ class Slop
   end
   alias help to_s
 
-  # @return [String] This Slop object will options and configuration
-  #   settings revealed
+  # Returns a String with options and configuration settings revealed.
   def inspect
     "#<Slop config_options=#{@sloptions.inspect}\n  " +
     options.map(&:inspect).join("\n  ") + "\n>"
@@ -737,7 +736,7 @@ class Slop
     end
   end
 
-  # traverse through the list of items sent to parse() or parse!() and
+  # Internal: traverse through the list of items sent to parse() or parse!() and
   # attempt to do the following:
   #
   # * Find an option object
